@@ -1,0 +1,156 @@
+//Ejercicio Mongo
+//Realizado por Gina Stephanie Gonzalez M
+const database ="compania"
+const collection ="Empleados"
+
+use(database);
+db.createCollection(collection);
+
+
+db.Empleados.insertMany([
+  { '_id': 1, "nombre": 'Juan',   'apellido': 'Torres', 'Cargo': 'Ingeniero en jefe', 'Nomina': 10000000, 'fechadecontratación': new Date('2014-03-01T08:00:00Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a63')} },
+  { '_id': 2, 'nombre': 'Brayan', 'apellido': 'Torres', 'Cargo': 'Profesor', 'Nomina': 9000000, 'fecha de contratación': new Date('2014-10-01T08:00:00Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a63')} },
+  { '_id': 3, 'nombre': 'Stiven', 'apellido': 'Torres', 'Cargo': 'Lider de recursos humanos', 'Nomina': 2000000, 'fechadecontratación': new Date('2014-03-15T09:00:00Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a63')}  },
+  { '_id': 4, 'nombre': 'Jesica', 'apellido': 'Perez',  'Cargo': 'Administrador', 'Nomina':3000000  , 'fechadecontratación': new Date('2014-04-04T11:21:39.736Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a66')}  },
+  { '_id': 5, 'nombre': 'Viviana','apellido': 'Perez',  'Cargo': 'Software engineer', 'Nomina': 20000000, 'fechadecontratación ': new Date('2014-04-04T21:23:13.331Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a65')}  },
+  { '_id': 6, 'nombre': 'Ana',    'apellido': 'Perez',  'Cargo': 'Ingeniero Químico', 'Nomina': 1500000, 'fechadecontratación ': new Date('2018-06-04T05:08:13Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a64')}  },
+  { '_id': 7, 'nombre': 'Maria',  'apellido': 'Sanchez','Cargo': 'Ingeniero Industrial', 'Nomina': 1400000, 'fechadecontratación ': new Date('2019-09-10T08:43:00Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a64')}  },
+  { '_id': 8, 'nombre': 'William','apellido': 'Sanchez','Cargo': 'Gerente General', 'Nomina': 50000, 'fechadecontratación ': new Date('2022-02-06T20:20:13Z'),'estado':true, "empresa": {"_id": ObjectId('628598fa45fbba64147b6a64')}  },
+]);
+
+const database ="compania"
+use(database);
+db.Empleados.find()
+// Desarrollo taller 
+//1. Insertar un documento en la colección de empleados
+const database ="compania"
+use(database);
+var fecha1= new Date(2021,08,24)
+db.Empleados.insertOne({'_id': 9, 'nombre': 'Pedro',   'apellido': 'Torres', 'Cargo': 'Ingeniero en jefe', 'Nomina': 20000000, 'fechadecontratación':fecha1, 'estado':true,"empresa":{"_id": ObjectId('628598fa45fbba64147b6a66')} })
+//
+
+//2. Insertar dos documentos en la colección de empleados
+const database ="compania"
+use(database);
+var fecha2= new Date(2015,05,09)
+db.Empleados.insertOne({'_id': 10, 'nombre': 'Stephanie',   'apellido': 'Gonzalez', 'Cargo': 'Ingeniero mecatronica', 'Nomina': 30000000, 'fechadecontratación':fecha2, 'estado':true,"empresa":{"_id": ObjectId('628598fa45fbba64147b6a65')} })
+
+var fecha3= new Date(2007,10,15)
+db.Empleados.insertOne({'_id': 11, 'nombre': 'Ruby',   'apellido': 'Mateus', 'Cargo': 'Arquitecta ', 'Nomina': 45000000, 'fechadecontratación':fecha3, 'estado':true,"empresa":{"_id": ObjectId('628598fa45fbba64147b6a66')} })
+//3. Insertar una colección llamada empresa con los siguientes atributos del documento:,a. nombre b. 'direccion'  c. telefon d. fecha de creación
+
+//4. insertar cuatro empresas en la colección empresa  
+
+const database ="compania"
+const collection1 ="Empresa"
+use(database);
+db.createCollection(collection1);
+db.Empresa.insertMany([
+  { "nombre": 'Concentrix',   'Dirección': 'calle 90', 'Telefono': 3245643, 'fechadecreacion': new Date('2000-03-01T08:00:00Z'),'estado':true },
+  { "nombre": 'Teleperformance',   'Dirección': 'calle 79', 'Telefono': 2453213, 'fechadecreacion': new Date('1967-10-11T09:00:00Z'),'estado':true },
+  {"nombre": 'Halliburton',   'Dirección': 'calle 200', 'Telefono': 5643432, 'fechadecreacion': new Date('1979-06-16T10:00:00Z'),'estado':true, },
+  { "nombre": 'Giitic',   'Dirección': 'carrera 67', 'Telefono': 8473823, 'fechadecreacion': new Date('1999-03-04T011:00:00Z'),'estado':true, },
+]);
+const database ="compania"
+use(database);
+db.Empresa.find()
+
+
+
+//4. ahora a cada documento hacer agregar otro atributo llamado empresa_id que sea el _id de la empresa
+
+const database ="compania"
+const collection1="Empresa"
+use(database);
+
+db.Empresa.updateOne(
+{_id: {$eq:"628598fa45fbba64147b6a63"}},
+{
+  $set: { "empresa_id": "WXY2323hryRW" }
+},
+{upsert:true}
+) 
+
+const database ="compania"
+use(database);
+db.Empresa.find()*/ 
+
+//5. Consultar todos los empleados de la empresa x
+
+const database ="compania"
+use(database);
+db.Empresa.find()
+
+const database ="compania"
+use(database);
+db.Empresa.aggregate([
+    { $match: {_id:ObjectId("628598fa45fbba64147b6a63")}},
+   {$lookup: {
+            from: "Empleados",
+            foreignField: "empresa",
+            localField: "_id",
+            as: "empleados "
+            }
+    }
+    ]);
+
+
+//7. eliminar todos los empleados de la empresa x
+const database ="compania"
+use(database);
+db.Empleados.remove({'empresa':ObjectId("628598fa45fbba64147b6a63")}) 
+//8. actualizar el nombre de una empresa por "Universidad Ean"
+const database ="compania"
+use(database);
+db.Empresa.update({'nombre':'Teleperformance'},{$set:{'nombre':'Universidad EAN'}})
+
+//9. Consultar todos los empleados que su sueldo este entre $1000000 y $6000000
+const database ="compania"
+use(database);
+db.Empleados.countDocuments({ $and: [{ "Nomina": {$gte: 1000000}}, {"Nomina": {$lte: 6000000}} ]})
+
+const database ="compania"
+use(database);
+db.Empleados.find({ $and: [{ "Nomina": {$gte: 1000000}}, {"Nomina": {$lte: 6000000}} ]})
+//10. sumar todos los sueldos de los empleados de la empresa "Universidad Ean"
+const database ="compania"
+use(database);
+db.Empleados.aggregate(
+   [
+     { $match: {empresa:ObjectId("628598fa45fbba64147b6a63")}},
+     {
+       $project:
+         {
+           totalsueldo: { sum:"Nomina"
+         }}
+     }
+   ]
+)
+//11. Modificar todos los empleados para que tengan un atributo array con comidas favoritas ["pizza","hamburguesa"...]
+
+db.Empleados.updateMany(
+   { },
+   [
+      { $set: { comidas: [ "$comida1", "$comida2" ] } },
+      
+      { $set: { comidas: { $switch: {
+                           branches: [
+                               { case: { [ "$empresa",'628598fa45fbba64147b6a63'  ] }, then: ["Hamburguesa,perro" ]},
+                               { case: { [ "$empresa",'628598fa45fbba64147b6a64'  ] }, then: ["Pasta,Salchicha"]},
+                               { case: { [ "$empresa",'628598fa45fbba64147b6a65'  ] }, then: ["Huevo,sushi" ]},
+                               { case: { [ "$empresa",'628598fa45fbba64147b6a66'  ] }, then: ["pizza,camarones" ]},
+                           ],
+                           default: "nada"
+     } } } }
+   ]
+)
+
+//12. Contar los empleados que tengan apellido Torres
+const database ="compania"
+use(database);
+db.Empleados.find({apellido:"Torres"}).count()
+//14. Consultar el empleado más joven
+const database ="compania"
+use(database);
+db.Empleados.aggregate([{$group:{"_id":"$_id", "noOfEmployee":{$sum:1}, "fecha":{$min:"$fechadecontratación"}}}]);
+
